@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulário de Notas</title>
+<style>
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+
+<h2>Formulário de Notas</h2>
+
+<form id="formulario" action="#" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required><br>
+
+    <label for="matricula">Matrícula:</label>
+    <input type="text" id="matricula" name="matricula" required><br>
+    
+    <label for="nota1">Nota 1:</label>
+    <input type="number" id="nota1" name="nota1" min="0" max="10" step="0.01" required><br>
+    
+    <label for="nota2">Nota 2:</label>
+    <input type="number" id="nota2" name="nota2" min="0" max="10" step="0.01" required><br>
+    
+    <input type="submit" value="Calcular Média">
+</form>
+
+<div id="media"></div>
+
+<script>
+    document.getElementById("formulario").onsubmit = function() {
+        var nota1 = parseFloat(document.getElementById("nota1").value);
+        var nota2 = parseFloat(document.getElementById("nota2").value);
+        
+
+        var media = (nota1 + nota2) / 2;
+        
+        var resultado = "<p>Média: " + media.toFixed(2) + "</p>";
+        
+        if (media >= 5) {
+            resultado += "<p>Resultado: Aprovado</p>";
+        } else {
+            resultado += "<p>Resultado: Reprovado</p>";
+        }
+        
+        document.getElementById("media").innerHTML = resultado;
+        
+        return false;
+    };
+</script>
+
+</body>
+</html>
